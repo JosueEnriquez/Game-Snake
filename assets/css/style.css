@@ -1,0 +1,59 @@
+.body {
+  height: 100vh;
+  width: 100vw;
+
+  display: grid;
+  justify-content: center;
+  align-items: center;
+
+  font-family: 'Poppins', sans-serif;
+}
+
+.title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.container {
+  display: grid;
+  gap: 1rem;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-restart {
+  transform: rotate(-90deg);
+}
+
+.board {
+  height: auto;
+  width: 50vw;
+  max-width: 450px;
+  
+  display: grid;
+
+  border: 1px solid gray;
+}
+
+.info-board {
+  width: 85px;
+
+  text-align: center;
+}
+
+.emptySquare {
+  background-color: transparent;
+}
+
+.snakeSquare {
+  background-color: #ffffff;
+}
+
+.foodSquare {
+  background-color: crimson;
+}
