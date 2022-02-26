@@ -24,6 +24,8 @@ let emptySquares; //*Almacena un Array que contiene las posiciones de los espaci
 
 //! Game Logic
 
+//? Creacion del tablero
+
 const createBoard = () => {  //! Esta función crea el tablero consumiendo un Array bidimensional
   board.style.gridTemplateColumns = `repeat(${boardWidth}, 1fr)`;
   boardSquares = Array.from(Array(boardHeight), () => new Array(boardWidth).fill(squareTypes.emptySquare));
@@ -51,4 +53,32 @@ const createBoard = () => {  //! Esta función crea el tablero consumiendo un Ar
                              //! boardSquares[9][9] crearia un elemento div con el Id 0909
                              //! boardSquares[10][2] crearia un elemento div con el Id 1002
                              //! boardSquares[8][20] crearia un elemento div con el Id 0820
+
+//? Pintado de espacio en el tablero
+
+const drawSquare = (square, type) => {  //! Esta función pinta en el tablero un espacio, utilizando los parámetros que se le pasa
+  const row = Number(square[0] + square[1]);
+  const column = Number(square[2] + square[3]);
+	
+  boardSquares[row][column] = squareTypes[type];
+  const squareElement = document.getElementById(square);
+  squareElement.setAttribute('class', `square ${type}`);
+
+  if ( type === 'emptySquare' ) {
+    emptySquares.push(square);
+  } else if ( emptySquares.indexOf(square) !== -1 ) {
+    emptySquares.splice(emptySquares.indexOf(square), 1)
+  }
+}                                       //! Adicionalmente, realiza algunas comprobaciones consultando al boardSquare
+                                        //! Para saber si el espacio a pintar es un espacio vacío
+                                        //! De ser así, agrega el espacio al emptySquares
+                                        //! O si no es un espacio ocupado por la comida
+                                        //! De ser así, quita el espacio del emptySquares
+                                        //! Primer Parámetro ⇒ Indica el Id del div a pintar
+                                        //! Segundo Parámetro ⇒ Indica el tipo de espacio a pintar
+                                        //! Ejemplos :
+                                        //! drawSquare(0485, emptySquare)
+                                        //! drawSquare(0505, snakeSquare)
+                                        //! drawSquare(0945, foodSquare)
+
 createBoard()
