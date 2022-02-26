@@ -5,9 +5,39 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Snake Game</title>
+  <!--* Css -->
   <link rel="stylesheet" href="./style.css">
+  <!--* Js -->
   <script src="./script.js" type="module" defer></script>
 </head>
 <body>
+  <!--? Contenedor Principal -->
+  <div class="container">
+    <!--? Titulo del Juego -->
+    <h1 class="title">SNAKE GAME</h1>
+    <!--? Contenedor Secundario -->
+    <div class="wrapper">
+      <!--? Botton de Reinicio -->
+      <button id="buttonReplay" class="button-restart">
+        <i class="fas fa-play"></i> RESTART
+      </button>
+      <!--? Tablero del juego -->
+      <div id="board" class="board">
+      </div>
+      <!--? Panel de información -->
+      <div class="info-board">
+        <h2 class="info-title">SCORE</h2>
+        <span id="scoreIndicator" class="info-score">00</span>
+      </div>
+    </div>
+  </div>
+
+  <!--! Elemento de referencia para crear con JS -->
+  <!-- <div id="posterGameOver" class="info-game-over hidden">
+    <h2 id="scoreEnd" class="score-end"></h2>
+    <span id="scoreMax" class="score-max"></span>
+  </div> -->
+  <!--! Elemento de referencia para crear con JS -->
+
 </body>
 </html>
