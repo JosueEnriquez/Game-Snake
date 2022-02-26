@@ -46,6 +46,10 @@
   text-align: center;
 }
 
+.square {
+  aspect-ratio: 1;
+}
+
 .emptySquare {
   background-color: transparent;
 }
