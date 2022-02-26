@@ -88,4 +88,12 @@ const createSnake = () => {  //! Esta función le atribuye a la variable snake u
   snake = ['0000']
 }                            //! Con el valor de las posiciones iniciales de la serpiente
 
+//? Pinta a la serpiente
+
+const drawSnake = () => {  //! Esta función pinta a la serpiente en el tablero utilizando la función drawSquare
+  snake.forEach( square => drawSquare(square, 'snakeSquare'))
+}
+
 createBoard()
+createSnake()
+drawSnake()
