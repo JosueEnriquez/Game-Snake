@@ -18,15 +18,16 @@ const squareTypes = {  //* Objeto que contiene los tipos de valores que podría 
 
 //! Game Variables
 
-let boardSquares;  //!*Almacena un Array bidimensional que servirá para crear el tablero
-                   //!*Adicionalmente, guarda toda la información del tablero
+let boardSquares;  //*Almacena un Array bidimensional que servirá para crear el tablero
+                   //*Adicionalmente, guarda toda la información del tablero
+let emptySquares; //*Almacena un Array que contiene las posiciones de los espacios vacíos, con referencia a boardSquares
 
 //! Game Logic
 
 const createBoard = () => {  //! Esta función crea el tablero consumiendo un Array bidimensional
   board.style.gridTemplateColumns = `repeat(${boardWidth}, 1fr)`;
   boardSquares = Array.from(Array(boardHeight), () => new Array(boardWidth).fill(squareTypes.emptySquare));
-  console.log(boardSquares);
+  emptySquares = [];
   boardSquares.forEach((row, rowIndex) => {
     row.forEach((column, columnIndex) => {
       const rowValue = String(rowIndex).padStart(2,'0');
@@ -37,6 +38,7 @@ const createBoard = () => {  //! Esta función crea el tablero consumiendo un Ar
       squareElement.setAttribute('class', 'square emptySquare');
       squareElement.setAttribute('id', squareValue);
       board.appendChild(squareElement);
+      emptySquares.push(squareValue);
     })
   })
 }                            //! Creando elementos por cada valor almacenado
