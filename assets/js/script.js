@@ -21,10 +21,11 @@ const squareTypes = {  //* Objeto que contiene los tipos de valores que podría 
 let boardSquares;  //*Almacena un Array bidimensional que servirá para crear el tablero
                    //*Adicionalmente, guarda toda la información del tablero
 let emptySquares; //*Almacena un Array que contiene las posiciones de los espacios vacíos, con referencia a boardSquares
+let snake; //*Almacena un Array que contiene las posiciones del cuerpo de la serpiente, con referencia a boardSquares
 
 //! Game Logic
 
-//? Creacion del tablero
+//? Creación del tablero
 
 const createBoard = () => {  //! Esta función crea el tablero consumiendo un Array bidimensional
   board.style.gridTemplateColumns = `repeat(${boardWidth}, 1fr)`;
@@ -80,5 +81,11 @@ const drawSquare = (square, type) => {  //! Esta función pinta en el tablero un
                                         //! drawSquare(0485, emptySquare)
                                         //! drawSquare(0505, snakeSquare)
                                         //! drawSquare(0945, foodSquare)
+
+//? Creacion de la serpiente
+
+const createSnake = () => {  //! Esta función le atribuye a la variable snake un Array
+  snake = ['0000']
+}                            //! Con el valor de las posiciones iniciales de la serpiente
 
 createBoard()
