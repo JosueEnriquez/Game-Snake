@@ -20,8 +20,9 @@ const squareTypes = {  //* Objeto que contiene los tipos de valores que podría 
 
 let boardSquares;  //*Almacena un Array bidimensional que servirá para crear el tablero
                    //*Adicionalmente, guarda toda la información del tablero
-let emptySquares; //*Almacena un Array que contiene las posiciones de los espacios vacíos, con referencia a boardSquares
-let snake; //*Almacena un Array que contiene las posiciones del cuerpo de la serpiente, con referencia a boardSquares
+let emptySquares;  //*Almacena un Array que contiene las posiciones de los espacios vacíos, con referencia a boardSquares
+let snake;  //*Almacena un Array que contiene las posiciones del cuerpo de la serpiente, con referencia a boardSquares
+let direction;  //*Almacena la dirección del movimiento de la serpiente
 
 //! Game Logic
 
@@ -101,6 +102,12 @@ const createRandomFood = () => {  //! Esta función pinta una comida en una posi
   drawSquare(randomEnptySquare, 'foodSquare')
 }                                 //! Para ello escoge una posición aleatoria del Array emptySquares y lo guarda en una variable
                                   //! Seguido le pasa dicha variable como primer parámetro a la función drawSquare y de segundo parámetro foodSquare
+
+//? Actualiza la dirección
+
+const setDirection = (newDirection) => {  //! Esta función actualiza la dirección del movimiento de la serpiente al valor que se le pasa como parámetro
+  direction = newDirection;
+}
 
 createBoard()
 createSnake()
