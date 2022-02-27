@@ -82,7 +82,7 @@ const drawSquare = (square, type) => {  //! Esta función pinta en el tablero un
                                         //! drawSquare(0505, snakeSquare)
                                         //! drawSquare(0945, foodSquare)
 
-//? Creacion de la serpiente
+//? Creación de la serpiente
 
 const createSnake = () => {  //! Esta función le atribuye a la variable snake un Array
   snake = ['0000']
@@ -94,6 +94,15 @@ const drawSnake = () => {  //! Esta función pinta a la serpiente en el tablero 
   snake.forEach( square => drawSquare(square, 'snakeSquare'))
 }
 
+//? Creación y pintado de la comida
+
+const createRandomFood = () => {  //! Esta función pinta una comida en una posición vacía del tablero
+  const randomEnptySquare = emptySquares[Math.floor(Math.random() * emptySquares.length)]
+  drawSquare(randomEnptySquare, 'foodSquare')
+}                                 //! Para ello escoge una posición aleatoria del Array emptySquares y lo guarda en una variable
+                                  //! Seguido le pasa dicha variable como primer parámetro a la función drawSquare y de segundo parámetro foodSquare
+
 createBoard()
 createSnake()
 drawSnake()
+createRandomFood()
