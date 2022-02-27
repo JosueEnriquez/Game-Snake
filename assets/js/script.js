@@ -105,11 +105,31 @@ const createRandomFood = () => {  //! Esta función pinta una comida en una posi
 
 //? Actualiza la dirección
 
-const setDirection = (newDirection) => {  //! Esta función actualiza la dirección del movimiento de la serpiente al valor que se le pasa como parámetro
+const setDirection = (newDirection) => {  //! Esta función actualiza la dirección del movimiento de la serpiente
   direction = newDirection;
-}
+}                                         //! Al valor que se le pasa como parámetro
+
+//? Detecta la dirección
+
+const directionEvent = (key) => {  //! Esta función verifica que tecla fue presionada y realiza algunas validaciones
+  switch (key.code) {
+    case 'ArrowUp':
+      direction != 'ArrowDown' && setDirection(key.code)
+      break;
+    case 'ArrowDown':
+      direction != 'ArrowUp' && setDirection(key.code)
+      break;
+    case 'ArrowLeft':
+      direction != 'ArrowRight' && setDirection(key.code)
+      break;
+    case 'ArrowRight':
+      direction != 'ArrowLeft' && setDirection(key.code)
+      break;
+  }
+}                                  //! Basándose en el resultado modifica o no modifica la dirección de la serpiente
 
 createBoard()
 createSnake()
 drawSnake()
 createRandomFood()
+document.addEventListener('keydown', directionEvent)
