@@ -138,13 +138,21 @@ const directionEvent = (key) => {  //! Esta función verifica que tecla fue pres
 
 const moveSnake = () => {  //! Esta función mueve a la serpiente, eliminando la última posición del cuerpo de la serpiente
   let nextSquare = String(Number(snake[snake.length - 1]) + directions[direction]).padStart(4, '0');
+  let nextRow = nextSquare[0] + nextSquare[1];
+  let nextColumn = nextSquare[2] + nextSquare[3];
 
-  const emptySquare = snake.shift();
-  drawSquare(emptySquare, 'emptySquare');
+  if ( boardSquares[Number(nextRow)][Number(nextColumn)] === '🍬' ) {
+    createRandomFood()
+  } else {
+    const emptySquare = snake.shift();
+    drawSquare(emptySquare, 'emptySquare');
+  }
 
   snake.push(nextSquare);
   drawSnake();
 }                          //! Y pintando la siguiente posición
+                           //! Pero si la siguiente posición está ocupada por una comida
+                           //! Ya no elimina la última posición de la serpiente
 
 createBoard()
 createSnake()
