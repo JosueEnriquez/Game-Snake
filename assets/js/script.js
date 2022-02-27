@@ -14,7 +14,13 @@ const squareTypes = {  //* Objeto que contiene los tipos de valores que podría 
   emptySquare: '◻',  //* Valor de un espacio vacío
   snakeSquare: '🐍',  //* Valor de un espacio ocupado por el cuerpo de la serpiente
   foodSquare: '🍬'  //* Valor de un espacio ocupado por una comida
-} 
+}
+const directions = {  //* Objeto que contiene los valores de las direcciones, que servirán para calcular la posición siguiente
+  ArrowUp: -100,  //* Valor que se utiliza si la serpiente se mueve hacia arriba
+  ArrowDown: 100,  //* Valor que se utiliza si la serpiente se mueve hacia abajo
+  ArrowRight: 1,  //* Valor que se utiliza si la serpiente se mueve hacia la derecha
+  ArrowLeft: -1,  //* Valor que se utiliza si la serpiente se mueve hacia la izquierda
+}; 
 
 //! Game Variables
 
@@ -127,6 +133,18 @@ const directionEvent = (key) => {  //! Esta función verifica que tecla fue pres
       break;
   }
 }                                  //! Basándose en el resultado modifica o no modifica la dirección de la serpiente
+
+//? Mueve a la serpiente
+
+const moveSnake = () => {  //! Esta función mueve a la serpiente, eliminando la última posición del cuerpo de la serpiente
+  let nextSquare = String(Number(snake[snake.length - 1]) + directions[direction]).padStart(4, '0');
+
+  const emptySquare = snake.shift();
+  drawSquare(emptySquare, 'emptySquare');
+
+  snake.push(nextSquare);
+  drawSnake();
+}                          //! Y pintando la siguiente posición
 
 createBoard()
 createSnake()
