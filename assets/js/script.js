@@ -202,6 +202,11 @@ const setGame = () => {  //! Esta función prepara todo lo necesario para poder 
   createRandomFood();
 }
 
-setGame()
+//? Comienza el juego
 
-document.addEventListener('keydown', directionEvent)
+const startGame = () => {  //! Esta función inicia el juego
+  setGame();
+  document.addEventListener('keydown', directionEvent);
+}
+
+startGame()
