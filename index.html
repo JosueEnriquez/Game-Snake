@@ -19,12 +19,26 @@
   <script src="./assets/js/script.js" defer></script>
 </head>
 <body class="body">
+  <!--? Header -->
+  <header class="header">
+    <span class="button-setting"><i class="fal fa-cog"></i></span>
+    <div class="setting-container">
+      <span class="button-close"></span><i class="far fa-times"></i></span>
+      <h2 class="setting-title">Settings</h2>
+      <label class="setting-label" for="inputWidth">Width</label>
+      <input class="setting-input" type="number" id="inputWidth" value="10">
+      <label class="setting-label" for="inputHeight">Height</label>
+      <input class="setting-input" type="number" id="inputHeight" value="10">
+      <button class="button-apply" id="buttonApply">Apply</button>
+    </div>
+    </div>
+  </header>
   <!--? Contenedor Principal -->
-  <div class="container">
+  <main class="container">
     <!--? Titulo del Juego -->
     <h1 class="title">SNAKE GAME</h1>
     <!--? Contenedor Secundario -->
-    <div class="wrapper">
+    <section class="wrapper">
       <!--? Botton de Reinicio -->
       <button id="buttonReplay" class="button-restart">
         <i class="fas fa-play"></i> RESTART
@@ -37,15 +51,7 @@
         <h2 class="info-title">SCORE</h2>
         <span id="scoreIndicator" class="info-score">00</span>
       </div>
-    </div>
-  </div>
-
-  <!--! Elemento de referencia para crear con JS -->
-  <!-- <div id="posterGameOver" class="info-game-over hidden">
-    <h2 id="scoreEnd" class="score-end"></h2>
-    <span id="scoreMax" class="score-max"></span>
-  </div> -->
-  <!--! Elemento de referencia para crear con JS -->
-
+    </section>
+  </main>
 </body>
 </html>
