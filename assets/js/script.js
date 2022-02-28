@@ -25,6 +25,8 @@ const directions = {  //* Objeto que contiene los valores de las direcciones, qu
 
 //! Game Variables
 
+let start = false;  //*Sirve para detectar cuando el juego comenzó
+let moveInterval;  //*Almacena un setInterval
 let boardSquares;  //*Almacena un Array bidimensional que servirá para crear el tablero
                    //*Adicionalmente, guarda toda la información del tablero
 let emptySquares;  //*Almacena un Array que contiene las posiciones de los espacios vacíos, con referencia a boardSquares
@@ -146,6 +148,11 @@ const directionEvent = (key) => {  //! Esta función verifica que tecla fue pres
     case 'ArrowRight':
       direction != 'ArrowLeft' && setDirection(key.code)
       break;
+  }
+
+  if ( start === false ) {
+    start = true
+    moveInterval = setInterval( () => moveSnake(), gameSpeed);
   }
 }                                  //! Basándose en el resultado modifica o no modifica la dirección de la serpiente
 
