@@ -141,7 +141,13 @@ const moveSnake = () => {  //! Esta función mueve a la serpiente, eliminando la
   let nextRow = nextSquare[0] + nextSquare[1];
   let nextColumn = nextSquare[2] + nextSquare[3];
 
-  if ( boardSquares[Number(nextRow)][Number(nextColumn)] === '🍬' ) {
+  if( nextSquare < 0 || 
+    nextSquare > boardHeight * 100 ||
+    (direction === 'ArrowRight' && nextColumn == boardWidth) ||
+    (direction === 'ArrowLeft' && nextColumn == 99 ||
+    boardSquares[Number(nextRow)][Number(nextColumn)] === squareTypes.snakeSquare) ) {
+    return gameOver();
+  } else if ( boardSquares[Number(nextRow)][Number(nextColumn)] === '🍬' ) {
     createRandomFood()
   } else {
     const emptySquare = snake.shift();
@@ -153,6 +159,7 @@ const moveSnake = () => {  //! Esta función mueve a la serpiente, eliminando la
 }                          //! Y pintando la siguiente posición
                            //! Pero si la siguiente posición está ocupada por una comida
                            //! Ya no elimina la última posición de la serpiente
+                           //! Además, si la siguiente posición pertenece a la serpiente o se sale del tablero, ejecuta la función gameOver
 
 //? Termina el juego
 
