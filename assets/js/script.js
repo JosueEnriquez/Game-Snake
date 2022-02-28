@@ -197,7 +197,12 @@ const gameOver = () => {  //! Esta función crea el cartel de game over y pausa 
   scoreMax.classList.add('score-max');
   posterGameOverTitle.innerText = 'GAME OVER'
   scoreEnd.innerHTML = `SCORE &nbsp; ${String(gameScore).padStart(2, '0')}`
-  scoreMax.innerHTML = `MAXSCORE &nbsp; ${String(gameScore).padStart(2, '0')}`;
+  if ( gameScore > localStorage.getItem("maxScore") ) {
+    localStorage.setItem("maxScore", `${gameScore}`)
+    scoreMax.innerHTML = `MAXSCORE &nbsp; ${String(gameScore).padStart(2, '0')}`;
+  }else {
+    scoreMax.innerHTML = `MAXSCORE &nbsp; ${localStorage.getItem("maxScore").padStart(2, '0')}`;
+  }
   board.appendChild(posterGameOver);
   posterGameOver.appendChild(posterGameOverTitle);
   posterGameOver.appendChild(scoreEnd);
@@ -228,5 +233,11 @@ const startGame = () => {  //! Esta función inicia el juego
 //? Reinicia el juego
 
 bntReplay.addEventListener('click', startGame)  //! Se le agrega un evento escuchador tipo click que ejecuta startGame cada vez que es llamado
+
+//? Almacena el puntaje maximo en el LocalStorage
+
+if ( localStorage.getItem("maxScore") === null ) {  //! Comprueba si maxScore ya existe él el localStore, de no ser así lo agrega
+  localStorage.setItem("maxScore", "0")
+}
 
 startGame()
