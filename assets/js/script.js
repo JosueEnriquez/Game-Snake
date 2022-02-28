@@ -110,11 +110,18 @@ const createRandomFood = () => {  //! Esta función pinta una comida en una posi
 }                                 //! Para ello escoge una posición aleatoria del Array emptySquares y lo guarda en una variable
                                   //! Seguido le pasa dicha variable como primer parámetro a la función drawSquare y de segundo parámetro foodSquare
 
-//? Logica de comer una comida 
+//? Actualiza el contador de puntaje
+
+const updateScore = () => {  //! Esta función actualiza el valor del puntaje en el html
+  score.innerText = String(gameScore).padStart(2, '0');
+}
+
+//? Logica de comer una comida
 
 const addFood = () => {  //! Esta función se ejecuta en el momento que la serpiente come una comida
   createRandomFood();
   gameScore++;
+  updateScore()
 }                        //! Y suma mas uno al score
 
 //? Actualiza la dirección
