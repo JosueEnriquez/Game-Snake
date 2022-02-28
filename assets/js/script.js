@@ -186,6 +186,7 @@ const moveSnake = () => {  //! Esta función mueve a la serpiente, eliminando la
 //? Termina el juego
 
 const gameOver = () => {  //! Esta función crea el cartel de game over y pausa el juego
+  clearInterval(moveInterval)
   const posterGameOver = document.createElement('div');
   const scoreEnd = document.createElement('h2');
   const scoreMax = document.createElement('span');
