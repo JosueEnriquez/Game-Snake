@@ -32,17 +32,17 @@
 
 .board {
   height: auto;
-  width: 50vw;
-  max-width: 450px;
+  width: 70vw;
+  max-width: 500px;
   
-  display: grid;
+  position: relative;
 
-  border: 1px solid gray;
+  display: grid;
 }
 
 .info-board {
   width: 85px;
-
+  
   text-align: center;
 }
 
@@ -60,4 +60,31 @@
 
 .foodSquare {
   background-color: crimson;
+}
+
+.info-game-over {
+  height: 100%;
+  width: 100%;
+
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.info-game-over__title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.score-end {
+  font-weight: 600
+}
+
+.score-max {
+  font-weight: 600
 }

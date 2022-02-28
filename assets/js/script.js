@@ -8,8 +8,8 @@ const score = document.getElementById("scoreIndicator");  //* Hace referencia al
 
 //! Game Settings
 
-const boardWidth = 10;  //* Define el ancho del tablero
-const boardHeight = 10;  //* Define la altura del tablero
+const boardWidth = 20;  //* Define el ancho del tablero
+const boardHeight = 20;  //* Define la altura del tablero
 const gameSpeed = 100;  //* Define la velocidad de la serpiente
 const squareTypes = {  //* Objeto que contiene los tipos de valores que podría almacenar el boardSquares
   emptySquare: '◻',  //* Valor de un espacio vacío
@@ -188,12 +188,18 @@ const moveSnake = () => {  //! Esta función mueve a la serpiente, eliminando la
 const gameOver = () => {  //! Esta función crea el cartel de game over y pausa el juego
   clearInterval(moveInterval)
   const posterGameOver = document.createElement('div');
-  const scoreEnd = document.createElement('h2');
+  const posterGameOverTitle = document.createElement('h2');
+  const scoreEnd = document.createElement('span');
   const scoreMax = document.createElement('span');
   posterGameOver.classList.add('info-game-over');
+  posterGameOverTitle.classList.add('info-game-over__title');
   scoreEnd.classList.add('score-end');
   scoreMax.classList.add('score-max');
+  posterGameOverTitle.innerText = 'GAME OVER'
+  scoreEnd.innerHTML = `SCORE &nbsp; ${String(gameScore).padStart(2, '0')}`
+  scoreMax.innerHTML = `MAXSCORE &nbsp; ${String(gameScore).padStart(2, '0')}`;
   board.appendChild(posterGameOver);
+  posterGameOver.appendChild(posterGameOverTitle);
   posterGameOver.appendChild(scoreEnd);
   posterGameOver.appendChild(scoreMax);
 }
