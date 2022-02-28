@@ -29,6 +29,7 @@ let boardSquares;  //*Almacena un Array bidimensional que servirá para crear el
 let emptySquares;  //*Almacena un Array que contiene las posiciones de los espacios vacíos, con referencia a boardSquares
 let snake;  //*Almacena un Array que contiene las posiciones del cuerpo de la serpiente, con referencia a boardSquares
 let direction;  //*Almacena la dirección del movimiento de la serpiente
+let gameScore = 0;  //*Almacena el puntaje
 
 //! Game Logic
 
@@ -109,6 +110,13 @@ const createRandomFood = () => {  //! Esta función pinta una comida en una posi
 }                                 //! Para ello escoge una posición aleatoria del Array emptySquares y lo guarda en una variable
                                   //! Seguido le pasa dicha variable como primer parámetro a la función drawSquare y de segundo parámetro foodSquare
 
+//? Logica de comer una comida 
+
+const addFood = () => {  //! Esta función se ejecuta en el momento que la serpiente come una comida
+  createRandomFood();
+  gameScore++;
+}                        //! Y suma mas uno al score
+
 //? Actualiza la dirección
 
 const setDirection = (newDirection) => {  //! Esta función actualiza la dirección del movimiento de la serpiente
@@ -141,14 +149,14 @@ const moveSnake = () => {  //! Esta función mueve a la serpiente, eliminando la
   let nextRow = nextSquare[0] + nextSquare[1];
   let nextColumn = nextSquare[2] + nextSquare[3];
 
-  if( nextSquare < 0 || 
-    nextSquare > boardHeight * 100 ||
+  if( Number(snake[snake.length - 1]) + directions[direction] < 0 || 
+    nextSquare >= boardHeight * 100 ||
     (direction === 'ArrowRight' && nextColumn == boardWidth) ||
     (direction === 'ArrowLeft' && nextColumn == 99 ||
     boardSquares[Number(nextRow)][Number(nextColumn)] === squareTypes.snakeSquare) ) {
     return gameOver();
   } else if ( boardSquares[Number(nextRow)][Number(nextColumn)] === '🍬' ) {
-    createRandomFood()
+    addFood()
   } else {
     const emptySquare = snake.shift();
     drawSquare(emptySquare, 'emptySquare');
@@ -158,7 +166,7 @@ const moveSnake = () => {  //! Esta función mueve a la serpiente, eliminando la
   drawSnake();
 }                          //! Y pintando la siguiente posición
                            //! Pero si la siguiente posición está ocupada por una comida
-                           //! Ya no elimina la última posición de la serpiente
+                           //! Ya no elimina la última posición de la serpiente y ejecuta la función addFood
                            //! Además, si la siguiente posición pertenece a la serpiente o se sale del tablero, ejecuta la función gameOver
 
 //? Termina el juego
@@ -180,4 +188,3 @@ createSnake()
 drawSnake()
 createRandomFood()
 document.addEventListener('keydown', directionEvent)
-gameOver()
