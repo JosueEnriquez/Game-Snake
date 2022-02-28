@@ -154,8 +154,23 @@ const moveSnake = () => {  //! Esta función mueve a la serpiente, eliminando la
                            //! Pero si la siguiente posición está ocupada por una comida
                            //! Ya no elimina la última posición de la serpiente
 
+//? Termina el juego
+
+const gameOver = () => {  //! Esta función crea el cartel de game over y pausa el juego
+  const posterGameOver = document.createElement('div');
+  const scoreEnd = document.createElement('h2');
+  const scoreMax = document.createElement('span');
+  posterGameOver.classList.add('info-game-over');
+  scoreEnd.classList.add('score-end');
+  scoreMax.classList.add('score-max');
+  board.appendChild(posterGameOver);
+  posterGameOver.appendChild(scoreEnd);
+  posterGameOver.appendChild(scoreMax);
+}
+
 createBoard()
 createSnake()
 drawSnake()
 createRandomFood()
 document.addEventListener('keydown', directionEvent)
+gameOver()
