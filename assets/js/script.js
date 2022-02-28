@@ -29,7 +29,7 @@ let boardSquares;  //*Almacena un Array bidimensional que servirá para crear el
 let emptySquares;  //*Almacena un Array que contiene las posiciones de los espacios vacíos, con referencia a boardSquares
 let snake;  //*Almacena un Array que contiene las posiciones del cuerpo de la serpiente, con referencia a boardSquares
 let direction;  //*Almacena la dirección del movimiento de la serpiente
-let gameScore = 0;  //*Almacena el puntaje
+let gameScore;  //*Almacena el puntaje
 
 //! Game Logic
 
@@ -38,7 +38,6 @@ let gameScore = 0;  //*Almacena el puntaje
 const createBoard = () => {  //! Esta función crea el tablero consumiendo un Array bidimensional
   board.style.gridTemplateColumns = `repeat(${boardWidth}, 1fr)`;
   boardSquares = Array.from(Array(boardHeight), () => new Array(boardWidth).fill(squareTypes.emptySquare));
-  emptySquares = [];
   boardSquares.forEach((row, rowIndex) => {
     row.forEach((column, columnIndex) => {
       const rowValue = String(rowIndex).padStart(2,'0');
@@ -190,8 +189,19 @@ const gameOver = () => {  //! Esta función crea el cartel de game over y pausa 
   posterGameOver.appendChild(scoreMax);
 }
 
-createBoard()
-createSnake()
-drawSnake()
-createRandomFood()
+//? Prepara todo para comenzar el juego
+
+const setGame = () => {  //! Esta función prepara todo lo necesario para poder comenzar el juego
+  gameScore = 0;
+  updateScore();
+  board.innerHTML = '';
+  emptySquares = [];
+  createBoard();
+  createSnake();
+  drawSnake();
+  createRandomFood();
+}
+
+setGame()
+
 document.addEventListener('keydown', directionEvent)
