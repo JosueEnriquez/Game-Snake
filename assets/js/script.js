@@ -186,7 +186,7 @@ const moveSnake = () => {  //! Esta función mueve a la serpiente, eliminando la
 //? Termina el juego
 
 const gameOver = () => {  //! Esta función crea el cartel de game over y pausa el juego
-  clearInterval(moveInterval)
+  clearInterval(moveInterval);
   const posterGameOver = document.createElement('div');
   const posterGameOverTitle = document.createElement('h2');
   const scoreEnd = document.createElement('span');
@@ -207,6 +207,7 @@ const gameOver = () => {  //! Esta función crea el cartel de game over y pausa 
 //? Prepara todo para comenzar el juego
 
 const setGame = () => {  //! Esta función prepara todo lo necesario para poder comenzar el juego
+  start = false;
   gameScore = 0;
   updateScore();
   board.innerHTML = '';
@@ -223,5 +224,9 @@ const startGame = () => {  //! Esta función inicia el juego
   setGame();
   document.addEventListener('keydown', directionEvent);
 }
+
+//? Reinicia el juego
+
+bntReplay.addEventListener('click', startGame)  //! Se le agrega un evento escuchador tipo click que ejecuta startGame cada vez que es llamado
 
 startGame()
