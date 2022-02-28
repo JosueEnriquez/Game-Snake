@@ -10,6 +10,7 @@ const score = document.getElementById("scoreIndicator");  //* Hace referencia al
 
 const boardWidth = 10;  //* Define el ancho del tablero
 const boardHeight = 10;  //* Define la altura del tablero
+const gameSpeed = 100;  //* Define la velocidad de la serpiente
 const squareTypes = {  //* Objeto que contiene los tipos de valores que podría almacenar el boardSquares
   emptySquare: '◻',  //* Valor de un espacio vacío
   snakeSquare: '🐍',  //* Valor de un espacio ocupado por el cuerpo de la serpiente
