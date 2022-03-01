@@ -236,7 +236,7 @@
 }
 
 .info-game-over {
-  height: 50%;
+  height: 70%;
   width: 80%;
 
   position: absolute;
@@ -253,11 +253,11 @@
   align-items: center;
   backdrop-filter: blur(1rem);
 
-  color: var(--clr-bds14);
+  color: white;
 }
 
 .info-game-over__title {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
   color: var(--clr-bds7);
