@@ -54,7 +54,7 @@
  filter: drop-shadow(0 0 20px var(--clr-bds14));
 }
 
-.button-setting:active{
+.button-setting--center{
   transform: translateX(calc(50vw - 50% - 0.5rem)) translateY(calc(50vh - 50% - 0.5rem)) scale(2) rotate(720deg);
 }
 
@@ -73,10 +73,18 @@
   align-items: center;
   gap: 10px;
   
-  transform: translateX(calc(50vw - 50%)) translateY(calc(50vh - 50%));
+  transform: translateX(calc(50vw - 50%)) translateY(calc(50vh - 50%)) scale(0);
   backdrop-filter: blur(1rem);
-  border-radius: 20px;
-  transition: all 0.5s ease-in-out;
+  border-radius: 10px;
+  transition: all 1s ease-in-out;
+  overflow: hidden;
+  user-select: none;
+  opacity: 0;
+}
+
+.setting-container--open {
+  opacity: 1;
+  transform: translateX(calc(50vw - 50%)) translateY(calc(50vh - 50%)) scale(1);
 }
 
 .button-close {

@@ -1,15 +1,18 @@
 'use strict'
 
 //! HTML Elements
-
+const settingBoard = document.getElementById('settingBoard');  //* Hace referencia la ventana de settings
+const btnSetting = document.getElementById('buttonSetting');  //* Hace referencia al botón Setting
+const btnClose = document.getElementById('buttonClose');  //* Hace referencia al botón Close Setting
+const btnApply = document.getElementById('buttonApply');  //* Hace referencia al botón Apply de Setting
 const bntReplay = document.getElementById("buttonReplay");  //* Hace referencia al botón Replay
 const board = document.getElementById("board");  //* Hace referencia al div contenedor del tablero
 const score = document.getElementById("scoreIndicator");  //* Hace referencia al span que muestra los puntos
 
 //! Game Settings
 
-const boardWidth = 20;  //* Define el ancho del tablero
-const boardHeight = 20;  //* Define la altura del tablero
+let boardWidth = 20;  //* Define el ancho del tablero
+let boardHeight = 20;  //* Define la altura del tablero
 const gameSpeed = 100;  //* Define la velocidad de la serpiente
 const squareTypes = {  //* Objeto que contiene los tipos de valores que podría almacenar el boardSquares
   emptySquare: '◻',  //* Valor de un espacio vacío
@@ -212,6 +215,7 @@ const gameOver = () => {  //! Esta función crea el cartel de game over y pausa 
 //? Prepara todo para comenzar el juego
 
 const setGame = () => {  //! Esta función prepara todo lo necesario para poder comenzar el juego
+  clearInterval(moveInterval)
   start = false;
   gameScore = 0;
   updateScore();
@@ -241,3 +245,31 @@ if ( localStorage.getItem("maxScore") === null ) {  //! Comprueba si maxScore ya
 }
 
 startGame()
+
+//? Lógica de la sección setting
+
+const openSettingBoard = () => {
+  btnSetting.classList.toggle('button-setting--center')
+  setTimeout(() => {
+    settingBoard.classList.toggle('setting-container--open')
+  }, 500)
+  
+}
+
+const closeSettingBoard = () => {
+  settingBoard.classList.toggle('setting-container--open')
+  setTimeout(() => {
+    btnSetting.classList.toggle('button-setting--center')
+  }, 500)
+  
+}
+
+const applyChanges = () => {
+  boardWidth = Number(document.getElementById('inputWidth').value)
+  boardHeight = Number(document.getElementById('inputHeight').value)
+  startGame()
+}
+
+btnSetting.addEventListener('click', openSettingBoard)
+btnClose.addEventListener('click', closeSettingBoard)
+btnApply.addEventListener('click', applyChanges)
