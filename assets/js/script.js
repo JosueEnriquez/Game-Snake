@@ -147,7 +147,6 @@ const addFood = () => {  //! Esta función se ejecuta en el momento que la serpi
 const setDirection = (newDirection) => {  //! Esta función actualiza la dirección del movimiento de la serpiente
   direction = blockedButtons ? direction : newDirection;
   blockedButtons = true;
-  direction = newDirection;
 }                                         //! Al valor que se le pasa como parámetro
 
 //? Detecta la dirección
