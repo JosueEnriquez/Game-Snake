@@ -98,7 +98,20 @@ const drawSquare = (square, type) => {  //! Esta función pinta en el tablero un
 //? Creación de la serpiente
 
 const createSnake = () => {  //! Esta función le atribuye a la variable snake un Array
-  snake = ['0000']
+  let startPosition;
+  if ( boardWidth % 2 == 0 ) {
+    startPosition = String( boardWidth / 2 - 1 ).padStart(2, '0')
+  } else {
+    startPosition = String( (boardWidth + 1) / 2 - 1 ).padStart(2, '0')
+  }
+  
+  if ( boardHeight % 2 == 0 ) {
+    startPosition = startPosition + String( (boardHeight) / 2).padStart(2, '0')
+  } else {
+    startPosition = startPosition + String( (boardHeight + 1) / 2 - 1 ).padStart(2, '0')
+  }
+
+  snake = [startPosition]
 }                            //! Con el valor de las posiciones iniciales de la serpiente
 
 //? Pinta a la serpiente
