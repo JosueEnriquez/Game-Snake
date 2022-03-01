@@ -1,3 +1,31 @@
+:root {
+  --clr-bg: #222738;
+  --clr-bg2: #181825;
+  --clr-bg2: #ffffff;
+  --clr-bg4: #4cffd7;
+  --clr-bds: #212130;
+  
+  --clr-bds1: #FF0000;
+  --clr-bds2: #00FF00;
+  --clr-bds3: #0000FF;
+  --clr-bds4: #FFFF00;
+  --clr-bds5: #FF00FF;
+  --clr-bds6: #00FFFF;
+  --clr-bds7: #FF9C00;
+  --clr-bds8: #800080;
+  --clr-bds9: #DEFF00;
+  --clr-bds10: #FF5A04;
+  --clr-bds11: #8408FF;
+  --clr-bds12: #00A08C;
+  --clr-bds13: #FFC600;
+  --clr-bds14: #CE0063;
+
+
+  --clr-tx1: #6e7888;
+  --clr-tx2: #222738;
+  
+}
+
 .body {
   height: 100vh;
   width: 100vw;
@@ -7,7 +35,103 @@
   align-items: center;
 
   font-family: 'Poppins', sans-serif;
+
+  background-color: var(--clr-bg);
 }
+
+/* !  Header  */
+
+.button-setting {
+ position: absolute;
+ z-index: 1;
+ top: 0.5rem;
+ left: 0.5rem;
+
+ font-size: 1.5rem;
+ color: var(--clr-bds14);
+ 
+ transition: all 1s ease-in-out;
+ filter: drop-shadow(0 0 20px var(--clr-bds14));
+}
+
+.button-setting:active{
+  transform: translateX(calc(50vw - 50% - 0.5rem)) translateY(calc(50vh - 50% - 0.5rem)) scale(2) rotate(720deg);
+}
+
+.setting-container {
+  width: 200px;
+  padding: 15px;
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  
+  transform: translateX(calc(50vw - 50%)) translateY(calc(50vh - 50%));
+  backdrop-filter: blur(1rem);
+  border-radius: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+.button-close {
+  width: 100%;
+  
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  
+  display: flex;
+  justify-content: right;
+  
+  font-size: 1rem;
+  color: white;
+  
+  filter: drop-shadow(0 0 20px white);
+}
+
+.setting-title{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.setting-label {
+  font-weight: bold;
+  color: var(--clr-tx1);
+}
+
+.setting-input {
+  width: 50px;
+  
+  text-align: center;
+  color: white;
+}
+
+.setting-input::-webkit-inner-spin-button,
+.setting-input::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.button-apply {
+  padding: 5px 10px;
+  
+  font-weight: bold;
+  color: #0f0717;
+  
+  border-radius: 10px;
+  filter: drop-shadow(0 0 20px var(--clr-bds14));
+  background-color: var(--clr-bds14);
+}
+
+/* !  Main  */
 
 .title {
   font-family: 'Press Start 2P', cursive;
@@ -33,7 +157,7 @@
 .board {
   height: auto;
   width: 70vw;
-  max-width: 500px;
+  max-width: 300px;
   
   position: relative;
 
