@@ -271,3 +271,28 @@
 .score-max {
   font-weight: bold
 }
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--clr-tx1);
+}
+
+.footer-contact {
+  font-size: 1rem;
+  transition: all 0.5s ease-in-out;
+}
+
+.footer-contact:hover {
+  color: white;
+}
+
+.footer-autor {
+  font-size: 0.6rem;
+}
+
+.footer-autor-heart {
+  color: var(--clr-bds14);
+  padding-left: 5px;
+}
