@@ -27,7 +27,7 @@ const directions = {  //* Objeto que contiene los valores de las direcciones, qu
 }; 
 
 //! Game Variables
-
+let blockedButtons = false;  //*Sirve para bloquear la dirección hasta que la serpiente se haya movido
 let start = false;  //*Sirve para detectar cuando el juego comenzó
 let moveInterval;  //*Almacena un setInterval
 let boardSquares;  //*Almacena un Array bidimensional que servirá para crear el tablero
@@ -145,6 +145,8 @@ const addFood = () => {  //! Esta función se ejecuta en el momento que la serpi
 //? Actualiza la dirección
 
 const setDirection = (newDirection) => {  //! Esta función actualiza la dirección del movimiento de la serpiente
+  direction = blockedButtons ? direction : newDirection;
+  blockedButtons = true;
   direction = newDirection;
 }                                         //! Al valor que se le pasa como parámetro
 
@@ -194,6 +196,7 @@ const moveSnake = () => {  //! Esta función mueve a la serpiente, eliminando la
 
   snake.push(nextSquare);
   drawSnake();
+  blockedButtons = false;
 }                          //! Y pintando la siguiente posición
                            //! Pero si la siguiente posición está ocupada por una comida
                            //! Ya no elimina la última posición de la serpiente y ejecuta la función addFood
